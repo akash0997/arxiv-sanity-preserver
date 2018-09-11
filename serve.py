@@ -679,12 +679,19 @@ if __name__ == "__main__":
   print('connecting to mongodb...')
   client = pymongo.MongoClient()
   mdb = client.arxiv
+  print('getting top 1 tweets')
   tweets_top1 = mdb.tweets_top1
+  print('getting top 7 tweets')
   tweets_top7 = mdb.tweets_top7
+  print('getting top 30 tweets')
   tweets_top30 = mdb.tweets_top30
+  print('getting comments')
   comments = mdb.comments
+  print('getting tags')
   tags_collection = mdb.tags
+  print('getting goaway')
   goaway_collection = mdb.goaway
+  print('getting follow')
   follow_collection = mdb.follow
   print('mongodb tweets_top1 collection size:', tweets_top1.count())
   print('mongodb tweets_top7 collection size:', tweets_top7.count())
@@ -710,5 +717,5 @@ if __name__ == "__main__":
     IOLoop.instance().start()
   else:
     print('starting flask!')
-    app.debug = False
+    app.debug = True
     app.run(port=args.port, host='0.0.0.0')
