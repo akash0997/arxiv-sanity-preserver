@@ -10,7 +10,7 @@ import numpy as np
 from sqlite3 import dbapi2 as sqlite3
 from hashlib import md5
 from flask import Flask, request, session, url_for, redirect, \
-     render_template, abort, g, flash, _app_ctx_stack
+     render_template, abort, g, flash, _app_ctx_stack, jsonify
 from flask_limiter import Limiter
 from werkzeug import check_password_hash, generate_password_hash
 import pymongo
@@ -25,7 +25,7 @@ if os.path.isfile('secret_key.txt'):
   SECRET_KEY = open('secret_key.txt', 'r').read()
 else:
   SECRET_KEY = 'devkey, should be in a file'
-app = Flask(__name__)
+app = Flask(__name__, static_folder="dist/static", template_folder="dist")
 app.config.from_object(__name__)
 limiter = Limiter(app, global_limits=["100 per hour", "20 per minute"])
 
@@ -248,7 +248,18 @@ def intmain():
   papers = papers_filter_version(papers, vstr)
   ctx = default_context(papers, render_format='recent',
                         msg='Showing most recent Arxiv papers:')
-  return render_template('main.html', **ctx)
+  return render_template('index.html', **ctx)
+
+@app.route("/testing")
+def testing():
+  vstr = request.args.get('vfilter', 'all')
+  papers = [db[pid] for pid in DATE_SORTED_PIDS] # precomputed
+  papers = papers_filter_version(papers, vstr)
+  ctx = default_context(papers, render_format='recent',
+                        msg='Showing most recent Arxiv papers:')
+  return jsonify(ctx)
+  
+  
 
 @app.route("/<request_pid>")
 def rank(request_pid=None):
@@ -718,4 +729,5 @@ if __name__ == "__main__":
   else:
     print('starting flask!')
     app.debug = True
-    app.run(port=args.port, host='0.0.0.0')
+    ##app.run(port=args.port, host='0.0.0.0')
+    app.run(host='0.0.0.0')
