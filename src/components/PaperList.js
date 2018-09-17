@@ -11,7 +11,7 @@ const PaperList = props => {
 
     console.log(results)
     let papers = results.map(result => 
-        <Message data={result} key={result.pid}/>
+        <Card data={result} key={result.pid}/>
     );
 
 
