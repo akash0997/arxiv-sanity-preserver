@@ -8,6 +8,8 @@ I have incorporated create-react-app in this project. Most of the React projects
 
 To run this project, follow instructions in [data_engineering.md](https://github.com/pranayaryal/arxiv-sanity-preserver/blob/pranay_features/data_engineering.md). Make sure you have mongodb installed and running.
 
+You will need to ensure that you have a virtualenv set up for the project and do `pip install -r requirements.txt`
+
 You will also have to do `npm install` in the project root directory to install all node_modules.
 
 Then run `npm run build` to build the static production css and javascript files.
