@@ -4,7 +4,7 @@ Tried to give it a new look with this Single Page Application. Most of the data 
 
 This is my attempt at understanding how data is being engineered.
 
-The root of the React project is src/index.js and the heavy-lifting is done in src/App.js.
+The root of the React project is [src/index.js](https://github.com/pranayaryal/arxiv-sanity-preserver/blob/pranay_features/src/index.js) and the heavy-lifting is done in src/App.js.
 
 I have incorporated create-react-app in this project. Most of the React files are under the src/ folder.
 
