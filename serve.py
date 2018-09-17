@@ -258,7 +258,14 @@ def testing():
   ctx = default_context(papers, render_format='recent',
                         msg='Showing most recent Arxiv papers:')
   return jsonify(ctx)
-  
+
+@app.route("/api/<request_pid>")
+def rankSimilar(request_pid=None):
+  if not isvalidid(request_pid):
+    return ''
+  papers = papers_similar(request_pid)
+  ctx = default_context(papers, render_format='paper')
+  return jsonify(ctx)
   
 
 @app.route("/<request_pid>")
@@ -385,6 +392,13 @@ def search():
   papers = papers_search(q) # perform the query and get sorted documents
   ctx = default_context(papers, render_format="search")
   return render_template('main.html', **ctx)
+
+@app.route("/api/search", methods=['GET'])
+def searchForApi():
+  q = request.args.get('q', '') # get the search request
+  papers = papers_search(q) # perform the query and get sorted documents
+  ctx = default_context(papers, render_format="search")
+  return jsonify(ctx)
 
 @app.route('/recommend', methods=['GET'])
 def recommend():
