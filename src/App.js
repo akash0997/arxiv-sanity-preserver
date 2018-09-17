@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './index.css'
 import Hero from './components/Hero';
 import Paper from './components/Paper';
-import CardList from './components/CardList';
+import PaperList from './components/PaperList';
 import axios from 'axios';
 
 class App extends Component {
@@ -15,17 +16,20 @@ class App extends Component {
 
   }
   componentDidMount(){
-      console.log(`Today's date is ${this.state.date}`)
-      console.log("The Paper component has mounted")
+      console.log('printing papers from cDM')
+      this.fetchData()
+  }
+
+  fetchData(){
+      console.log('Fetching data ...')
       axios.get("/testing")
           .then(response => {
               //this.state.msg = response.data.msg
               this.setState({msg: response.data.msg})
               this.setState({papers: response.data.papers})
-              console.log('logging papers')
-              console.log(this.state.papers)
           })
           .catch(error => console.log(error))
+      console.log('Data fetched!!')
   }
  
   render() {
@@ -34,9 +38,9 @@ class App extends Component {
         <Hero/>
         <br/>
         <div className="container">
-          <CardList papers={this.state.papers}/>
+          <PaperList papers={this.state.papers}/>
         </div>
-    </div>
+      </div>
     );
   }
 }
