@@ -16,10 +16,17 @@ const Card = props =>  {
 
       const images = importAll(require.context('../thumbs', false, /\.(png|jpe?g|svg)$/))
 
+      const authorsFromProps = props.data.authors;
+
+      let authors = authorsFromProps.map(author => {
+           const href=`/search/?q=${author.replace(/ /g, '+')}`
+           const atag = <li><a class="pagination-link" onClick={e => props.searchByAuthor(author, e)}>{author}</a></li>;
+           return atag;
+        }
+        );
+
       return (
           <li>
-          <div class="columns">
-            <div className="column is-three-fourths">
             <div className="card">
             <div className="card-image">
             </div>
@@ -27,7 +34,12 @@ const Card = props =>  {
               <div className="media">
                 <div className="media-content">
                   <a href={props.data.link} target="_blank"><p className="title is-4">{props.data.title}</p></a>
-                  <p className="subtitle is-6">{props.data.authors.map(author => ` ${author} |`)}</p>
+                  {/* <p className="subtitle is-6">{props.data.authors.map(author => ` ${author} |`)}</p> */}
+                  <nav class="pagination" role="navigation"  aria-label="pagination">
+                    <ul className="pagination-list">
+                      {authors}
+                    </ul>
+                  </nav>
                 </div>
                 <div className="media-right">
                   <figure className="image is-260x260">
@@ -42,13 +54,11 @@ const Card = props =>  {
                 <br/>
                 <time datetime="2016-1-1">
                 {props.data.published_time} | <a href={pdf_link} target="_blank">pdf</a>
-                <p>Show similar</p>
+                <p><a onClick={ e => props.handleGetSimilar(props.data.pid, e)}>Show similar</a></p>
                 </time>
               </div>
             </div>
           </div>
-          </div>
-        </div>
         </li>
     ); 
   }
