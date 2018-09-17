@@ -1,6 +1,6 @@
 This project is a fork of Andrej Karpathy's https://github.com/karpathy/arxiv-sanity-preserver. All the credit goes to him.
 
-Tried to give it a new look with this Single Page Application. Most of the data fetching is done with ajax requests using axios and the styling is done using bulma.css
+Tried to give it a new look with this Single Page Application. Most of the data fetching is done with ajax requests using axios and the styling is done using bulma.css. The work is still in progress.
 
 This is my attempt at understanding how data is being engineered.
 
