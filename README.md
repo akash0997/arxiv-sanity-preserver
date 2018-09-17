@@ -1,14 +1,10 @@
 This project is a fork of Andrej Karpathy's https://github.com/karpathy/arxiv-sanity-preserver. All the credit goes to him.
 
-Tried to give it a new look with this Single Page Application. Most of the data fetching is done with ajax requests using axios.
+Tried to give it a new look with this Single Page Application. Most of the data fetching is done with ajax requests using axios and the styling is done using bulma.css
 
-The root of the React project is src/index.js and the heavy-lifting is done in src/App.js
+This is my attempt at understanding how data is being engineered.
 
-I am trying to better understand this application as well as trying to simplify the javascript using React. I am also working on giving it a better design using bulma.css
-
-
-
-My main aim of this project is to understand the data engineering involved and be deeply involved with open-source.
+The root of the React project is src/index.js and the heavy-lifting is done in src/App.js.
 
 I have incorporated create-react-app in this project. Most of the React files are under the src/ folder.
 
