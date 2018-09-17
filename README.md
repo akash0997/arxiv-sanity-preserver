@@ -20,6 +20,6 @@ You will also have to do `npm install` in the project root directory to install 
 
 Then run `npm run build` to build the static production css and javascript files.
 
- After that, run the flask server by typing `python serve.py`. Then visit http://localhost:5000. The project should appear there.
+ You may use one terminal to run `python serve.py` and the other terminal to build the css and javascript by typing `npm run build`
 
 
