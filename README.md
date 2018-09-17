@@ -2,6 +2,8 @@ This project is a fork of https://github.com/karpathy/arxiv-sanity-preserver.
 
 This is a Single Page Application. Most of the data fetching is done with ajax requests using axios.
 
+The root of the React project is src/index.js and the heavy-lifting is done in src/App.js
+
 I am trying to better understand this application as well as trying to simplify the javascript using React. I am also working on giving it a better design using bulma.css
 
 
