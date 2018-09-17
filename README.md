@@ -4,7 +4,7 @@ I am trying to better understand this application as well as trying to simplify 
 
 My main aim of this project is to understand the data engineering involved and be deeply involved with open-source.
 
-I have incorporated create-react-app in this project. Most of the React projects are under the src/ folder.
+I have incorporated create-react-app in this project. Most of the React files are under the src/ folder.
 
 To run this project, follow instructions in [data_engineering.md](https://github.com/pranayaryal/arxiv-sanity-preserver/blob/pranay_features/data_engineering.md). Make sure you have mongodb installed and running.
 
