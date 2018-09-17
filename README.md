@@ -1,6 +1,6 @@
-This project is a fork of https://github.com/karpathy/arxiv-sanity-preserver.
+This project is a fork of Andrej Karpathy's https://github.com/karpathy/arxiv-sanity-preserver. All the credit goes to him.
 
-This is a Single Page Application. Most of the data fetching is done with ajax requests using axios.
+Tried to give it a new look with this Single Page Application. Most of the data fetching is done with ajax requests using axios.
 
 The root of the React project is src/index.js and the heavy-lifting is done in src/App.js
 
