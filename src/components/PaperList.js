@@ -11,7 +11,12 @@ const PaperList = props => {
 
     console.log(results)
     let papers = results.map(result => 
-        <Card data={result} key={result.pid}/>
+        <Card 
+         data={result} 
+         key={result.pid}
+          handleGetSimilar={props.handleGetSimilar}
+          searchByAuthor={props.byAuthor}
+         />
     );
 
 
