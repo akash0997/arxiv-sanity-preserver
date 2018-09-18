@@ -19,9 +19,7 @@ const Card = props =>  {
       const authorsFromProps = props.data.authors;
 
       let authors = authorsFromProps.map(author => {
-           const href=`/search/?q=${author.replace(/ /g, '+')}`
-           const atag = <li><a class="pagination-link" onClick={e => props.searchByAuthor(author, e)}>{author}</a></li>;
-           return atag;
+           return <li><a class="pagination-link" onClick={e => props.searchByAuthor(author, e)}>{author}</a></li>;
         }
         );
 
