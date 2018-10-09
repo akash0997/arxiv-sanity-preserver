@@ -12,7 +12,7 @@ from hashlib import md5
 from flask import Flask, request, session, url_for, redirect, \
      render_template, abort, g, flash, _app_ctx_stack, jsonify
 from flask_limiter import Limiter
-from werkzeug import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 import pymongo
 
 from utils import safe_pickle_dump, strip_version, isvalidid, Config
@@ -621,6 +621,36 @@ def addfollow():
             return 'OK'
         
     return 'NOTOK'
+
+@app.route('/loginFromApi', methods=['POST'])
+def loginFromApi():
+  login_data = request.get_json()
+  username = login_data['params']['username']
+  password = login_data['params']['password']
+  if get_user_id(username) is not None:
+    user = query_db('''select * from user 
+      where username = ?''', (username,), one=True)
+    if check_password_hash(user['pw_hash'], password):
+      session['user_id'] = get_user_id(username)
+      success_dict = {'success': 'success'}
+      return jsonify(success_dict)
+    else:
+      fail_dict = { 'success': 'failure'}
+      return jsonify(fail_dict)
+  else:
+    print('you are in the creation section')
+    creation_time = int(time.time())
+    g.db.execute('''insert into user (username, pw_hash, creation_time) values(?, ?, ?)''',
+      [username,
+       generate_password_hash(password),
+       creation_time])
+    user_id = g.db.execute('''select last_insert_rowid()''').fetchall()[0][0]
+    g.db.commit()
+    success_dict = {'success': 'success'}
+    return jsonify(success_dict)
+    
+
+
 
 @app.route('/login', methods=['POST'])
 def login():
