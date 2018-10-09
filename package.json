@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.1",
+    "node-sass": "^4.9.3",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-scripts": "1.1.5"
@@ -12,10 +13,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "npm-watch"
   },
   "devDependencies": {
     "axios": "^0.18.0",
-    "prop-types": "^15.6.2"
+    "npm-watch": "^0.4.0",
+    "prop-types": "^15.6.2",
+    "sass-loader": "^7.1.0"
+  },
+  "watch": {
+    "build": "src/"
   }
 }
