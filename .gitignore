@@ -10,3 +10,14 @@ env/
 data
 *.DS_Store
 twitter.txt
+
+node_modules/
+
+#Text-editor related
+.vscode/
+
+#build files
+dist/
+
+#python environment
+my_env/
