@@ -1,7 +1,7 @@
 import pickle
 import time
 import random
-from  urllib.request import urlopen
+from urllib2 import urlopen
 from utils import Config
 import shutil
 import os
